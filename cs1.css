@@ -1,0 +1,141 @@
+/* ベーススタイル */
+body {
+  margin: 0;
+  font-family: "Poppins", "Arial Black", sans-serif;
+  background: #000;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* 背景アニメーション */
+.dynamic-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(255, 0, 150, 0.5), rgba(0, 204, 255, 0.5));
+  animation: float 10s infinite ease-in-out;
+  mix-blend-mode: overlay;
+}
+
+.circle:nth-child(1) {
+  width: 500px;
+  height: 500px;
+  top: 5%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.circle:nth-child(2) {
+  width: 800px;
+  height: 800px;
+  top: 50%;
+  left: 50%;
+  animation-delay: 2s;
+}
+
+.circle:nth-child(3) {
+  width: 400px;
+  height: 400px;
+  top: 75%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.2);
+  }
+}
+
+/* スクロールテキスト */
+.header .scrolling-text {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 215, 0, 0.5);
+  animation: scroll-text 10s linear infinite;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+@keyframes scroll-text {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* サプライズボタン */
+.surprise-button {
+  width: 300px;
+  height: 80px;
+  background: linear-gradient(90deg, rgba(255, 0, 150, 1), rgba(0, 204, 255, 1));
+  color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.surprise-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-45deg);
+  transition: all 0.4s ease;
+}
+
+.surprise-button:hover {
+  transform: translateY(-10px) scale(1.1);
+  box-shadow: 0 15px 30px rgba(255, 0, 150, 0.4);
+}
+
+.surprise-button:hover::after {
+  left: 100%;
+}
+
+.surprise-button:active {
+  transform: translateY(0) scale(1.05);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
